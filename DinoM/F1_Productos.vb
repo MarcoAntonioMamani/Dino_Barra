@@ -1047,4 +1047,43 @@ Public Class F1_Productos
             dgjDetalleProducto.Refresh()
         End If
     End Sub
+
+    Private Sub ButtonX1_Click(sender As Object, e As EventArgs) Handles ButtonX1.Click
+        Dim dt As DataTable
+        If (MessageBox.Show("DESEA IMPRIMIR CODIGO DE BARRAS PARA TODOS LOS PRODUCTOS?", "PREGUNTA...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes) Then
+            'Process.Start(_archivo)
+            dt = L_fnCodigoBarra()
+        Else
+            dt = L_fnCodigoBarraUno(tbCodigo.Text)
+
+
+        End If
+
+        For i As Integer = 0 To dt.Rows.Count - 1
+            Dim codigo As String = "0000" + dt.Rows(i).Item("yfnumi").ToString
+            Dim bm As Bitmap = Nothing
+            bm = Codigos.codigo128("A" & codigo & "B", False, 20)
+            If Not IsNothing(bm) Then
+                Dim Bin As New MemoryStream
+                bm.Save(Bin, Imaging.ImageFormat.Png)
+                dt.Rows(i).Item("img") = Bin.GetBuffer
+            End If
+        Next
+        If Not IsNothing(P_Global.Visualizador) Then
+            P_Global.Visualizador.Close()
+        End If
+        P_Global.Visualizador = New Visualizador
+        Dim objrep As New R_CodigoBarras
+        ' GenerarNro(_dt)
+        'objrep.SetDataSource(Dt1Kardex)
+
+        objrep.SetDataSource(dt)
+        P_Global.Visualizador.CrGeneral.ReportSource = objrep 'Comentar
+        P_Global.Visualizador.Show() 'Comentar
+        P_Global.Visualizador.BringToFront() 'Comentar
+    End Sub
+
+    Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
+
+    End Sub
 End Class

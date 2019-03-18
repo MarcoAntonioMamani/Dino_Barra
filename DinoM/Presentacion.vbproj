@@ -119,6 +119,9 @@
     <Reference Include="GMap.NET.WindowsForms">
       <HintPath>C:\Librerias\Gmap\GMap.NET.WindowsForms.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\..\..\..\Publica\Test Codebar\GenerarCodigos\GenerarCodigos\bin\Debug\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Janus.Data.v3">
       <HintPath>C:\Librerias\Janus\Janus.Data.v3.dll</HintPath>
     </Reference>
@@ -167,6 +170,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Control\Codigos.vb" />
     <Compile Include="Control\Imageus.Designer.vb">
       <DependentUpon>Imageus.vb</DependentUpon>
     </Compile>
@@ -455,6 +459,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>R_Clientes.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reporte\R_CodigoBarras.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>R_CodigoBarras.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reporte\R_Notadeentrega2.vb">
@@ -886,6 +896,10 @@
     <EmbeddedResource Include="Reporte\R_Clientes.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>R_Clientes.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte\R_CodigoBarras.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>R_CodigoBarras.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reporte\R_Notadeentrega2.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -1365,6 +1379,7 @@
     <Content Include="Resources\check-mark.png" />
     <None Include="Resources\cobro.png" />
     <None Include="Resources\creditopagos.png" />
+    <None Include="Resources\codigobarra.png" />
     <Content Include="Resources\dinases.png" />
     <None Include="Resources\MapaClientes.png" />
     <None Include="Resources\ventasCostos.png" />
